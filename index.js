@@ -67,11 +67,11 @@ class SuperSet extends Set {
     }
 
     reduce(func, initialValue) {
-        if (arguments.length < 3 && this.size === 0)
+        if (arguments.length < 2 && this.size === 0)
             throw new TypeError("An initial value is required when using an empty set.");
 
         const iterator = this[Symbol.iterator]();
-        let result = arguments.length === 2 ? iterator.next().value : initialValue;
+        let result = arguments.length === 1 ? iterator.next().value : initialValue;
 
         for (let itm of iterator)
             result = func(result, itm, itm, this);
