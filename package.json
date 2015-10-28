@@ -1,0 +1,35 @@
+{
+  "name": "superset",
+  "version": "0.1.0",
+  "description": "A library that provides the missing Set methods such as map and filter.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^3.4.0",
+    "eslint": "^1.7.3",
+    "istanbul": "^0.4.0",
+    "mocha": "^2.3.3"
+  },
+  "scripts": {
+    "test": "istanbul cover ./node_modules/mocha/bin/_mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/BYK/superset.git"
+  },
+  "keywords": [
+    "Set",
+    "ES6",
+    "ES2015",
+    "functional",
+    "map",
+    "filter",
+    "set"
+  ],
+  "author": "Burak Yigit Kaya <ben@byk.im>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BYK/superset/issues"
+  },
+  "homepage": "https://github.com/BYK/superset#readme"
+}
