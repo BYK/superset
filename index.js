@@ -11,19 +11,19 @@ function* filterGen(setObj, filter) {
             yield itm;
 }
 
-function* unionGen(set1, set2) {
-    yield* set1;
-    yield* set2;
-}
-
 function* subtractGen(set1, set2) {
     for (let itm of set1)
         if (!set2.has(itm))
             yield itm;
 }
 
+function* unionGen(set1, set2) {
+    yield* set1;
+    yield* set2;
+}
+
 function* xorGen(set1, set2) {
-    return unionGen(
+    yield* unionGen(
         subtractGen(set1, set2),
         subtractGen(set2, set1)
     );
