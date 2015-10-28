@@ -1,8 +1,12 @@
 {
   "name": "superset",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A library that provides the missing Set methods such as map and filter.",
   "main": "index.js",
+  "engineStrict" : true,
+  "engines": {
+      "node": ">= 4.0.0"
+  },
   "dependencies": {},
   "devDependencies": {
     "chai": "^3.4.0",
