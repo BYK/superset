@@ -16,7 +16,8 @@
     "mocha": "^2.3.3"
   },
   "scripts": {
-    "test": "eslint --ignore-path .gitignore . && istanbul cover ./node_modules/mocha/bin/_mocha",
+    "pretest": "eslint --ignore-path .gitignore .",
+    "test": "istanbul cover ./node_modules/mocha/bin/_mocha",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
