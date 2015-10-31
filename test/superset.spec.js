@@ -19,6 +19,13 @@ describe("SuperSet", () => {
 
             expect(Array.from(result)).to.eql([1, 4, 9]);
         });
+
+        it("should apply the transform function to using the provided context", () => {
+            const context = { mul: 2 };
+            const result = testSet.map(function (elem) { return elem * this.mul; }, context);
+
+            expect(Array.from(result)).to.eql([2, 4, 6]);
+        });
     });
 
     describe("union", () => {
@@ -45,6 +52,10 @@ describe("SuperSet", () => {
         it("should return true for empty set", () => {
             expect((new SuperSet()).every(elem => !elem)).to.be.true;
         });
+
+        it("should use the provided context", () => {
+            expect(testSet.every(function (elem) { return elem < this.pivot; }, { pivot: 2 })).to.be.false;
+        });
     });
 
     describe("find", () => {
@@ -52,6 +63,10 @@ describe("SuperSet", () => {
             const result = testSet.find(elem => elem > 1);
 
             expect(result).to.equal(2);
+        });
+
+        it("should use the provided context", () => {
+            expect(testSet.find(function (elem) { return elem < this.pivot; }, { pivot: 2 })).to.equal(1);
         });
     });
 
@@ -93,6 +108,18 @@ describe("SuperSet", () => {
 
             expect(result).to.equal(6);
         });
+
+        it("should reduce the elements using the initial value", () => {
+            const result = testSet.reduce((accumulator, elem) => accumulator + elem, 10);
+
+            expect(result).to.equal(16);
+        });
+
+        it("should throw a TypeError on an empty set without an initial value", () => {
+            const tester = () => new SuperSet().reduce((acc, elem) => acc + elem);
+
+            expect(tester).to.throw(TypeError);
+        });
     });
 
     describe("some", () => {
@@ -110,6 +137,10 @@ describe("SuperSet", () => {
 
         it("should return false for empty set", () => {
             expect((new SuperSet()).some(elem => !elem)).to.be.false;
+        });
+
+        it("should use the provided context", () => {
+            expect(testSet.some(function (elem) { return elem < this.pivot; }, { pivot: 2 })).to.be.true;
         });
     });
 
@@ -143,6 +174,10 @@ describe("SuperSet", () => {
 
         it("should return true for equivalent SuperSets", () => {
             expect(testSet.equals(new SuperSet(testSet))).to.be.true;
+        });
+
+        it("should return false for same sized but different sets", () => {
+            expect(testSet.equals(new SuperSet([2, 4, 6]))).to.be.false;
         });
     });
 
