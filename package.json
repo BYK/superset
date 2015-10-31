@@ -3,14 +3,14 @@
   "version": "0.1.1",
   "description": "A library that provides the missing Set methods such as map and filter.",
   "main": "index.js",
-  "engineStrict" : true,
+  "engineStrict": true,
   "engines": {
-      "node": ">= 4.0.0"
+    "node": ">= 4.0.0"
   },
   "dependencies": {},
   "devDependencies": {
     "chai": "^3.4.0",
-    "eslint": "^1.7.3",
+    "eslint": "^1.8.0",
     "istanbul": "^0.4.0",
     "mocha": "^2.3.3"
   },
