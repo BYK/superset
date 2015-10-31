@@ -10,12 +10,14 @@
   "dependencies": {},
   "devDependencies": {
     "chai": "^3.4.0",
+    "coveralls": "^2.11.4",
     "eslint": "^1.8.0",
     "istanbul": "^0.4.0",
     "mocha": "^2.3.3"
   },
   "scripts": {
-    "test": "eslint --ignore-path .gitignore . && istanbul cover ./node_modules/mocha/bin/_mocha"
+    "test": "eslint --ignore-path .gitignore . && istanbul cover ./node_modules/mocha/bin/_mocha",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
