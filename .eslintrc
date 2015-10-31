@@ -38,6 +38,8 @@ rules:
     no-invalid-regexp: 2
     no-mixed-spaces-and-tabs: 2
     no-regex-spaces: 2
+    no-magic-numbers: 2
+    valid-jsdoc: 2
 
     # Style
     indent: 2
@@ -163,3 +165,24 @@ rules:
         - 2
         - uninitialized: always
           initialized: never
+    global-require: 2
+    # ES2015
+    arrow-parens:
+        - 2
+        - as-needed
+    arrow-body-style:
+        - 2
+        - as-needed
+    arrow-spacing: 2
+    no-arrow-condition: 2
+    generator-star-spacing:
+        - 2
+        - after
+    no-class-assign: 2
+    no-dupe-class-members: 2
+
+    object-shorthand: 2
+    prefer-arrow-callback: 2
+    prefer-const: 2
+    prefer-template: 2
+    require-yield: 2

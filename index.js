@@ -1,18 +1,18 @@
 "use strict";
 
 function* mapGen(setObj, transform) {
-    for (let itm of setObj)
+    for (const itm of setObj)
         yield transform(itm, itm, setObj);
 }
 
 function* filterGen(setObj, filter) {
-    for (let itm of setObj)
+    for (const itm of setObj)
         if (filter(itm, itm, setObj))
             yield itm;
 }
 
 function* subtractGen(set1, set2) {
-    for (let itm of set1)
+    for (const itm of set1)
         if (!set2.has(itm))
             yield itm;
 }
@@ -44,7 +44,7 @@ class SuperSet extends Set {
 
     every(func, thisArg) {
         const check = func.bind(thisArg);
-        for (let itm of this)
+        for (const itm of this)
             if (!check(itm, itm, this))
                 return false;
 
@@ -53,7 +53,7 @@ class SuperSet extends Set {
 
     find(func, thisArg) {
         const check = func.bind(thisArg);
-        for (let itm of this)
+        for (const itm of this)
             if (check(itm, itm, this))
                 return itm;
     }
@@ -73,7 +73,7 @@ class SuperSet extends Set {
         const iterator = this[Symbol.iterator]();
         let result = arguments.length === 1 ? iterator.next().value : initialValue;
 
-        for (let itm of iterator)
+        for (const itm of iterator)
             result = func(result, itm, itm, this);
 
         return result;
@@ -81,7 +81,7 @@ class SuperSet extends Set {
 
     some(func, thisArg) {
         const check = func.bind(thisArg);
-        for (let itm of this)
+        for (const itm of this)
             if (check(itm, itm, this))
                 return true;
 
@@ -105,7 +105,7 @@ class SuperSet extends Set {
     }
 
     update(iterable) {
-        for (let itm of iterable)
+        for (const itm of iterable)
             this.add(itm);
 
         return this;
