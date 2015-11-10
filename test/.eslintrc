@@ -1,5 +1,4 @@
 env:
     mocha: true
 rules:
-    no-unused-expressions: 0
     no-magic-numbers: 0

@@ -1,7 +1,10 @@
 "use strict";
 
 const path = require("path");
-const expect = require("chai").expect;
+const chai = require("chai");
+chai.use(require("dirty-chai"));
+
+const expect = chai.expect;
 
 const SuperSet = require(path.join(__dirname, "..", "index.js"));
 
@@ -38,23 +41,23 @@ describe("SuperSet", () => {
 
     describe("every", () => {
         it("should return false if any of the elements in the set does not satisfy the condition", () => {
-            expect(testSet.every(elem => elem > 1)).to.be.false;
+            expect(testSet.every(elem => elem > 1)).to.be.false();
         });
 
         it("should return true if all elements in the set satisfy the condition", () => {
-            expect(testSet.every(elem => elem >= 1)).to.be.true;
+            expect(testSet.every(elem => elem >= 1)).to.be.true();
         });
 
         it("should return false if no element in the set satisfies the condition", () => {
-            expect(testSet.every(elem => elem < 1)).to.be.false;
+            expect(testSet.every(elem => elem < 1)).to.be.false();
         });
 
         it("should return true for empty set", () => {
-            expect((new SuperSet()).every(elem => !elem)).to.be.true;
+            expect((new SuperSet()).every(elem => !elem)).to.be.true();
         });
 
         it("should use the provided context", () => {
-            expect(testSet.every(function (elem) { return elem < this.pivot; }, { pivot: 2 })).to.be.false;
+            expect(testSet.every(function (elem) { return elem < this.pivot; }, { pivot: 2 })).to.be.false();
         });
     });
 
@@ -124,60 +127,60 @@ describe("SuperSet", () => {
 
     describe("some", () => {
         it("should return true if any of the elements in the set satisfies the condition", () => {
-            expect(testSet.some(elem => elem === 2)).to.be.true;
+            expect(testSet.some(elem => elem === 2)).to.be.true();
         });
 
         it("should return true if more than one element in the set satisfy the condition", () => {
-            expect(testSet.some(elem => elem > 1)).to.be.true;
+            expect(testSet.some(elem => elem > 1)).to.be.true();
         });
 
         it("should return false if no element in the set satisfies the condition", () => {
-            expect(testSet.some(elem => elem < 1)).to.be.false;
+            expect(testSet.some(elem => elem < 1)).to.be.false();
         });
 
         it("should return false for empty set", () => {
-            expect((new SuperSet()).some(elem => !elem)).to.be.false;
+            expect((new SuperSet()).some(elem => !elem)).to.be.false();
         });
 
         it("should use the provided context", () => {
-            expect(testSet.some(function (elem) { return elem < this.pivot; }, { pivot: 2 })).to.be.true;
+            expect(testSet.some(function (elem) { return elem < this.pivot; }, { pivot: 2 })).to.be.true();
         });
     });
 
     describe("isSubsetOf", () => {
         it("should return false when other set does not contain all elements of the source", () => {
-            expect(testSet.isSubsetOf(otherSetObj)).to.be.false;
+            expect(testSet.isSubsetOf(otherSetObj)).to.be.false();
         });
 
         it("should return true for any empty set as the source", () => {
-            expect((new SuperSet()).isSubsetOf(testSet)).to.be.true;
+            expect((new SuperSet()).isSubsetOf(testSet)).to.be.true();
         });
 
         it("should return true for the same set", () => {
-            expect(testSet.isSubsetOf(testSet)).to.be.true;
+            expect(testSet.isSubsetOf(testSet)).to.be.true();
         });
 
         it("should return true when other set cover the source set", () => {
             otherSetObj.add(1);
-            expect(testSet.isSubsetOf(otherSetObj)).to.be.true;
+            expect(testSet.isSubsetOf(otherSetObj)).to.be.true();
         });
     });
 
     describe("equals", () => {
         it("should return false for different sets", () => {
-            expect(testSet.equals(otherSetObj)).to.be.false;
+            expect(testSet.equals(otherSetObj)).to.be.false();
         });
 
         it("should return true for equivalent Sets", () => {
-            expect(testSet.equals(new Set(testSet))).to.be.true;
+            expect(testSet.equals(new Set(testSet))).to.be.true();
         });
 
         it("should return true for equivalent SuperSets", () => {
-            expect(testSet.equals(new SuperSet(testSet))).to.be.true;
+            expect(testSet.equals(new SuperSet(testSet))).to.be.true();
         });
 
         it("should return false for same sized but different sets", () => {
-            expect(testSet.equals(new SuperSet([2, 4, 6]))).to.be.false;
+            expect(testSet.equals(new SuperSet([2, 4, 6]))).to.be.false();
         });
     });
 
