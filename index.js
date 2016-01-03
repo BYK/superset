@@ -81,11 +81,12 @@ class SuperSet extends Set {
     }
 
     /**
-     * Applies the provided filter `func` to all elements in the set and returns a new set with the return values.
+     * Applies the provided filter `func` to all elements in the set and returns a new set with the returned, filtered
+     * elements.
      *
-     * @param {Function} func The transform function for each element in the set.
-     * @param {Object} [thisArg] The context object to be bound to the provided transform `func`.
-     * @returns {SuperSet} The set of transformed items.
+     * @param {Function} func The filter/test function for each element in the set.
+     * @param {Object} [thisArg] The context object to be bound to the provided test `func`.
+     * @returns {SuperSet} The set of items that passes the test/filter.
      */
     filter(func, thisArg) {
         return new SuperSet(filterGen(this, func.bind(thisArg)));
