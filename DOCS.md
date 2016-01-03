@@ -20,21 +20,13 @@ Otherwise, the value `undefined` will be passed for use as its `this` value. The
 
 ### Parameters
 
-#### callback
+#### func
 
 Function that produces an element of the new set, taking three arguments:
 
-##### currentValue
-
-The current element being processed in the set.  
-
-##### index
-
-The index of the current element being processed in the set.  
-
-##### setobj
-
-The set map was called upon.  
+**currentValue**: The current element being processed in the set.  
+**index**: The index of the current element being processed in the set.  
+**setobj**: The set map was called upon.  
 
 #### thisArg
 
