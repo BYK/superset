@@ -6,15 +6,17 @@ function* mapGen(setObj, transform) {
 }
 
 function* filterGen(setObj, filter) {
-    for (const itm of setObj)
+    for (const itm of setObj) {
         if (filter(itm, itm, setObj))
             yield itm;
+    }
 }
 
 function* subtractGen(set1, set2) {
-    for (const itm of set1)
+    for (const itm of set1) {
         if (!set2.has(itm))
             yield itm;
+    }
 }
 
 function* unionGen(set1, set2) {
@@ -44,18 +46,20 @@ class SuperSet extends Set {
 
     every(func, thisArg) {
         const check = func.bind(thisArg);
-        for (const itm of this)
+        for (const itm of this) {
             if (!check(itm, itm, this))
                 return false;
+        }
 
         return true;
     }
 
     find(func, thisArg) {
         const check = func.bind(thisArg);
-        for (const itm of this)
+        for (const itm of this) {
             if (check(itm, itm, this))
                 return itm;
+        }
     }
 
     join(separator) {
@@ -81,9 +85,10 @@ class SuperSet extends Set {
 
     some(func, thisArg) {
         const check = func.bind(thisArg);
-        for (const itm of this)
+        for (const itm of this) {
             if (check(itm, itm, this))
                 return true;
+        }
 
         return false;
     }
