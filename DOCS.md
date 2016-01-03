@@ -40,6 +40,9 @@ Mapping a set of numbers to a set of square roots
     var roots = numbers.map(Math.sqrt);
     // roots is now SuperSet{1, 2, 3}, numbers is still SuperSet{1, 4, 9}
 
+See [Array.prototype.map on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+for more examples.
+
 
 ## `filter(func, thisArg)`
 
