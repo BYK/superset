@@ -39,6 +39,8 @@ rules:
     no-mixed-spaces-and-tabs: 2
     no-regex-spaces: 2
     no-magic-numbers: 2
+
+    require-jsdoc: 2
     valid-jsdoc: 2
 
     # Style
