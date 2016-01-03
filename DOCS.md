@@ -74,6 +74,34 @@ Merging two sets
 
 ## `every(func, thisArg)`
 
+The `every()` method tests whether all elements in the set pass the test implemented by the provided function.
+
+### Parameters
+
+#### func
+
+Function to test each element of the set. Invoked with arguments `(element, element, setobj)`.
+
+#### thisArg
+
+*Optional.* Value to use as `this` when executing `func`. 
+
+### Example
+
+Testing size of all set elements
+
+    function isBigEnough(value) {
+      return value >= 10;
+    }
+    
+    var mySet = new SuperSet([12, 5, 8, 130, 44]);
+    mySet.every(isBigEnough);  // false
+    mySet.every(isBigEnough);  // true
+
+See [Array.prototype.every on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every)
+for more examples.
+
+
 ## `find(func, thisArg)`
 
 ## `join(separator)`
