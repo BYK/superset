@@ -94,9 +94,8 @@ Testing size of all set elements
       return value >= 10;
     }
     
-    var mySet = new SuperSet([12, 5, 8, 130, 44]);
-    mySet.every(isBigEnough);  // false
-    mySet.every(isBigEnough);  // true
+    new SuperSet([12, 5, 8, 130, 44]).every(isBigEnough);    // false
+    new SuperSet([12, 54, 18, 130, 44]).every(isBigEnough);  // true
 
 See [Array.prototype.every on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every)
 for more examples.
