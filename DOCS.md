@@ -7,30 +7,15 @@ A library for ES6 that extends the built-in `Set` class to implement the missing
 
 The `map()` method creates a new set with the results of calling a provided function on every element in this set.
 
-`map` calls a provided callback function once for each element in a set, and constructs a new set from the results.
-
-`func` is invoked with three arguments: the value of the element, the value of the element again since that is the
-"key", and the `SuperSet` object being traversed.
-
-If a `thisArg` parameter is provided to `map`, it will be passed to `func` when invoked, for use as its `this` value.
-Otherwise, the value `undefined` will be passed for use as its `this` value. The `this` value ultimately observable by
-`func` is determined according to the usual rules for determining the `this` seen by a function.
-
-`map` does not mutate the set on which it is called (although `func`, if invoked, may do so).
-
 ### Parameters
 
 #### func
 
-Function that produces an element of the new set, taking three arguments:
-
-**currentValue**: The current element being processed in the set.  
-**index**: The index of the current element being processed in the set.  
-**setobj**: The set map was called upon.  
+Function that produces an element of the new set. Invoked with arguments `(element, element, setobj)`.
 
 #### thisArg
 
-*Optional.* Value to use as this when executing callback. 
+*Optional.* Value to use as `this` when executing `func`. 
 
 ### Example
 
@@ -45,6 +30,32 @@ for more examples.
 
 
 ## `filter(func, thisArg)`
+
+The `filter()` method creates a new set with all elements that pass the test implemented by the provided function.
+
+### Parameters
+
+#### func
+
+Function to test each element of the set. Invoked with arguments `(element, element, setobj)`. Return `true` to keep the
+element, `false` otherwise.
+
+#### thisArg
+
+*Optional.* Value to use as `this` when executing `func`. 
+
+### Example
+
+Filtering out all small values
+
+    function isBigEnough(value) {
+        return value >= 10;
+    }
+    var filtered = new SuperSet([12, 5, 8, 130, 44]).filter(isBigEnough);
+    // filtered is SuperSet{12, 130, 44}
+
+See [Array.prototype.filter on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+for more examples.
 
 ## `union(otherSetObj)`
 
