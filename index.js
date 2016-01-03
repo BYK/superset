@@ -106,7 +106,7 @@ class SuperSet extends Set {
     }
 
     subtract(otherSetObj) {
-        return this.filter(itm => !otherSetObj.has(itm));
+        return new SuperSet(subtractGen(this, otherSetObj));
     }
 
     update(iterable) {
