@@ -59,6 +59,19 @@ for more examples.
 
 ## `union(otherSetObj)`
 
+The `union()` method returns a new set comprised of the set on which it is called joined with the set provided as the
+argument.
+
+### Example
+
+Merging two sets
+
+    var first3 = new SuperSet(['a', 'b', 'c']);
+    var from2to5 = new SuperSet(['b', 'c', 'd', 'e']);
+    
+    var first5 = first3.union(from2to5);
+    // first5 is SuperSet{'a', 'b', 'c', 'd', 'e'}
+
 ## `every(func, thisArg)`
 
 ## `find(func, thisArg)`
