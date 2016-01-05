@@ -1,7 +1,7 @@
 # SuperSet
 
-A library for ES6 that extends the built-in `Set` class to implement the missing fundamental methods such as `.map`,
-`.filter` and `.reduce` in addition to basic set methods such as `.union` and `.isSubsetOf`.
+A library for ES6 that extends the built-in `Set` class to implement the missing fundamental methods such as `map()`,
+`filter()` and `reduce()` in addition to basic set methods such as `union()` and `isSubsetOf()`.
 
 ## `map(func, thisArg)`
 

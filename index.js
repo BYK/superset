@@ -32,7 +32,7 @@
  */
 
 /**
- * Generator that implements ".map". Passed to SuperSet/Set constructor for efficiency from the actual `.map` method.
+ * Generator that implements `map()`. Passed to SuperSet/Set constructor for efficiency from the actual `map()` method.
  *
  * @param {Set} setObj The set object to be transformed
  * @param {mapper} transform Transform function to be applied to each element in the set
@@ -44,7 +44,7 @@ function* mapGen(setObj, transform) {
 }
 
 /**
- * Generator that implements ".filter". Passed to SuperSet/Set constructor for efficiency from the actual `.filter`
+ * Generator that implements `filter()`. Passed to SuperSet/Set constructor for efficiency from the actual `filter()`
  * method.
  *
  * @param {Set} setObj The set object to be filtered
@@ -59,7 +59,7 @@ function* filterGen(setObj, filter) {
 }
 
 /**
- * Generator that implements set subtraction. Used by the ".subtract" method and other helpers.
+ * Generator that implements set subtraction. Used by the `subtract()` method and other helpers.
  * @param {Set} set1 The set to be subtracted from.
  * @param {Set} set2 The set that is going to be subtracted.
  * @returns {Generator} A stream of items in the resultant set.
@@ -95,15 +95,15 @@ function* xorGen(set1, set2) {
 }
 
 /**
- * A more capable `Set` type that implements essential collection methods such as `.map`, `.filter` and `.reduce` in
- * addition to basic set methods such as `.union`, `.isSubsetOf` etc. extending the built-in `Set` type.
+ * A more capable `Set` type that implements essential collection methods such as `map()`, `filter()` and `reduce()` in
+ * addition to basic set methods such as `union()`, `isSubsetOf()` etc. extending the built-in `Set` type.
  */
 class SuperSet extends Set {
     /**
      * Applies the provided transforming `func` to all elements in the set and returns a new set with the return values.
      *
      * @param {mapper} func The transform function for each element in the set.
-     * @param {Object} [thisArg] The context object to be bound to the provided tranform `func`.
+     * @param {Object} [thisArg] The context object to be bound to the provided transform `func`.
      * @returns {SuperSet} The set of transformed items.
      */
     map(func, thisArg) {

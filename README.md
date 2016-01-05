@@ -1,7 +1,7 @@
 # superset [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url]
 
-A library for ES6 that extends the built-in `Set` class to implement the missing fundamental methods such as `.map`,
-`.filter` and `.reduce` in addition to basic set methods such as `.union` and `.isSubsetOf`.
+A library for ES6 that extends the built-in `Set` class to implement the missing fundamental methods such as `map()`,
+`filter()` and `reduce()` in addition to basic set methods such as `union()` and `isSubsetOf()`.
 
 ## Install from NPM
 
