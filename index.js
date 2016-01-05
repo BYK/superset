@@ -1,10 +1,41 @@
 "use strict";
 
 /**
+ * The callback type used by the `map()` method.
+ *
+ * @callback mapper
+ * @param {*} element The element being processed
+ * @param {*} key The element being processed again, since sets don't have keys
+ * @param {SuperSet} setObj The set instance being worked on
+ * @returns {*} The processed item
+ */
+
+/**
+ * The callback used by methods `filter()`, `some()` and `find()`.
+ *
+ * @callback tester
+ * @param {*} element The element being tested
+ * @param {*} key The element being tested again, since sets don't have keys
+ * @param {SuperSet} setObj The set instance being worked on
+ * @returns {Boolean} The result of the test
+ */
+
+/**
+ * The callback type used by the `reduce()` method.
+ *
+ * @callback reductionProcessor
+ * @param {*} accumulator The current accumulator value
+ * @param {*} item The element being processed
+ * @param {*} key The element being processed again, since sets don't have keys
+ * @param {SuperSet} setObj The set instance being worked on
+ * @returns {*} The new value of the accumulator
+ */
+
+/**
  * Generator that implements ".map". Passed to SuperSet/Set constructor for efficiency from the actual `.map` method.
  *
  * @param {Set} setObj The set object to be transformed
- * @param {Function} transform Transform function to be applied to each element in the set
+ * @param {mapper} transform Transform function to be applied to each element in the set
  * @returns {Generator} A stream of transformed items.
  */
 function* mapGen(setObj, transform) {
@@ -17,7 +48,7 @@ function* mapGen(setObj, transform) {
  * method.
  *
  * @param {Set} setObj The set object to be filtered
- * @param {Function} filter Filter function to be applied to each element in the set
+ * @param {tester} filter Filter function to be applied to each element in the set
  * @returns {Generator} A stream of filtered items.
  */
 function* filterGen(setObj, filter) {
@@ -71,7 +102,7 @@ class SuperSet extends Set {
     /**
      * Applies the provided transforming `func` to all elements in the set and returns a new set with the return values.
      *
-     * @param {Function} func The transform function for each element in the set.
+     * @param {mapper} func The transform function for each element in the set.
      * @param {Object} [thisArg] The context object to be bound to the provided tranform `func`.
      * @returns {SuperSet} The set of transformed items.
      */
@@ -83,7 +114,7 @@ class SuperSet extends Set {
      * Applies the provided filter `func` to all elements in the set and returns a new set with the returned, filtered
      * elements.
      *
-     * @param {Function} func The filter/test function for each element in the set.
+     * @param {tester} func The filter/test function for each element in the set.
      * @param {Object} [thisArg] The context object to be bound to the provided test `func`.
      * @returns {SuperSet} The set of items that passes the test/filter.
      */
@@ -109,7 +140,7 @@ class SuperSet extends Set {
      * Applies the provided `func` to all items in the set. Returns `true` if all items result in a "truthy" value,
      * `false` otherwise.
      *
-     * @param {Function} func The "test" function that will be applied to each item in the set.
+     * @param {tester} func The "test" function that will be applied to each item in the set.
      * @param {Object} [thisArg] The context object to be bound to the provided transform `func`.
      * @returns {boolean} `true` if all items "pass the test", `false` otherwise.
      */
@@ -127,7 +158,7 @@ class SuperSet extends Set {
      * Applies the provided `func` to all items in the set and returns the first one that makes it return a "truthy"
      * value.
      *
-     * @param {Function} func The "test" function to be applied to items in the set.
+     * @param {tester} func The "test" function to be applied to items in the set.
      * @param {Object} [thisArg] The context object to be bound to the provided transform `func`.
      * @returns {*} The first item from the set that "passes the test".
      */
@@ -161,11 +192,9 @@ class SuperSet extends Set {
 
     /**
      * Reduces all items in the set using the provided reducing `func`. Equivalent of `Array.prototype.reduce`.
-     * @param {Function} func The reducing function. Takes an accumulator as the first argument, the current item as the
-     *                        second and third arguments and the set being worked on as the forth and last argument.
-     *                        Expected to return the new value of the accumulator.
+     * @param {reductionProcessor} func The reducing function.
      * @param {*} [initialValue] The initial value for the accumulator. When `reduce` is called on a non-empty set, the
-     *                           first value of the set is used if omitted.
+     *                           first value of the set is used as the default value.
      * @returns {*} The result of the whole reduce operation.
      */
     reduce(func, initialValue) {
@@ -185,7 +214,7 @@ class SuperSet extends Set {
      * Applies the provided `func` to all items in the set. Returns `true` if any one of results in a "truthy" value,
      * `false` otherwise.
      *
-     * @param {Function} func The "test" function that will be applied to each item in the set.
+     * @param {tester} func The "test" function that will be applied to each item in the set.
      * @param {Object} [thisArg] The context object to be bound to the provided transform `func`.
      * @returns {boolean} `true` if one of the items in the set "passes the test", `false` otherwise.
      */
