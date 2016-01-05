@@ -3,6 +3,7 @@
 A library for ES6 that extends the built-in `Set` class to implement the missing fundamental methods such as `.map`,
 `.filter` and `.reduce` in addition to basic set methods such as `.union` and `.isSubsetOf`.
 
+
 ## `map(func, thisArg)`
 
 The `map()` method creates a new set with the results of calling a provided function on every element in this set.
@@ -11,7 +12,7 @@ The `map()` method creates a new set with the results of calling a provided func
 
 #### func
 
-Function that produces an element of the new set. Invoked with arguments `(element, element, setobj)`.
+Function that produces an element of the new set. Invoked with arguments `(element, element, setObj)`.
 
 #### thisArg
 
@@ -37,7 +38,7 @@ The `filter()` method creates a new set with all elements that pass the test imp
 
 #### func
 
-Function to test each element of the set. Invoked with arguments `(element, element, setobj)`. Return `true` to keep the
+Function to test each element of the set. Invoked with arguments `(element, element, setObj)`. Return `true` to keep the
 element, `false` otherwise.
 
 #### thisArg
@@ -57,6 +58,7 @@ Filtering out all small values
 See [Array.prototype.filter on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
 for more examples.
 
+
 ## `union()`
 
 The `union()` method returns a new set comprised of the set on which it is called joined with the sets provided as the
@@ -75,6 +77,7 @@ Merging two sets
 See [Array.prototype.concat on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)
 for more examples.
 
+
 ## `every(func, thisArg)`
 
 The `every()` method tests whether all elements in the set pass the test implemented by the provided function.
@@ -83,7 +86,7 @@ The `every()` method tests whether all elements in the set pass the test impleme
 
 #### func
 
-Function to test each element of the set. Invoked with arguments `(element, element, setobj)`.
+Function to test each element of the set. Invoked with arguments `(element, element, setObj)`.
 
 #### thisArg
 
@@ -106,23 +109,67 @@ for more examples.
 
 ## `find(func, thisArg)`
 
+The `find()` method returns a value in the set, if an element in the set satisfies the provided testing function.
+Otherwise `undefined` is returned.
+
+### Parameters
+
+#### func
+
+Function to test each element of the set. Invoked with arguments `(element, element, setObj)`.
+
+#### thisArg
+
+*Optional.* Value to use as `this` when executing `func`. 
+
+### Example
+
+Find a prime number in a set
+
+    function isPrime(element, _, setObj) {
+        let start = 2;
+        
+        while (start <= Math.sqrt(element)) {
+            if (element % start++ < 1)
+                return false;
+        }
+        
+        return element > 1;
+    }
+    
+    new SuperSet([4, 6, 8, 12]).find(isPrime);  // undefined, not found
+    new SuperSet([4, 5, 8, 12]).find(isPrime);  // 5
+
+See [Array.prototype.find on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
+for more examples.
+
+
 ## `join(separator)`
+
 
 ## `first`
 
+
 ## `reduce(func, initialValue)`
+
 
 ## `some(func, thisArg)`
 
+
 ## `isSubsetOf(otherSetObj)`
+
 
 ## `equals(otherSetObj)`
 
+
 ## `intersect(otherSetObj)`
+
 
 ## `subtract(otherSetObj)`
 
+
 ## `update(iterable)`
+
 
 ## `xor(otherSetObj)`
 
