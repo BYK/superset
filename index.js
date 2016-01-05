@@ -42,13 +42,12 @@ function* subtractGen(set1, set2) {
 
 /**
  * Generator that simply yields all items from the provided sets.
- * @param {Set} set1 The first set to be merged.
- * @param {Set} set2 The second set to be merged.
- * @returns {Generator} A stream of items from the two provided sets.
+ * @param {...Set} sets The sets to be chained
+ * @returns {Generator} A stream of items from all provided sets.
  */
-function* unionGen(set1, set2) {
-    yield* set1;
-    yield* set2;
+function* chain() {
+    for (const setObj of arguments)
+        yield* setObj;
 }
 
 /**
@@ -58,7 +57,7 @@ function* unionGen(set1, set2) {
  * @returns {Generator} A stream of items that only occur in one of the provided two sets.
  */
 function* xorGen(set1, set2) {
-    yield* unionGen(
+    yield* chain(
         subtractGen(set1, set2),
         subtractGen(set2, set1)
     );
@@ -93,14 +92,17 @@ class SuperSet extends Set {
     }
 
     /**
-     * Merges the set with the provided set and returns a new set as the result. Equivalent of the mathematical "union"
+     * Merges the set with all provided sets and returns a new set as the result. Equivalent of the mathematical "union"
      * operation.
      *
-     * @param {Set} otherSetObj The set to be merged/unioned with.
+     * @param {...Set} sets The sets to be merged/unioned with.
      * @returns {SuperSet} The resultant union set.
      */
-    union(otherSetObj) {
-        return new SuperSet(unionGen(this, otherSetObj));
+    union() {
+        const sets = Array.from(arguments);
+        sets.unshift(this);
+
+        return new SuperSet(chain.apply(undefined, sets));
     }
 
     /**

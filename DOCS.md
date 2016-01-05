@@ -57,10 +57,10 @@ Filtering out all small values
 See [Array.prototype.filter on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
 for more examples.
 
-## `union(otherSetObj)`
+## `union()`
 
-The `union()` method returns a new set comprised of the set on which it is called joined with the set provided as the
-argument.
+The `union()` method returns a new set comprised of the set on which it is called joined with the sets provided as the
+arguments.
 
 ### Example
 
@@ -71,6 +71,9 @@ Merging two sets
     
     var first5 = first3.union(from2to5);
     // first5 is SuperSet{'a', 'b', 'c', 'd', 'e'}
+
+See [Array.prototype.concat on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)
+for more examples.
 
 ## `every(func, thisArg)`
 

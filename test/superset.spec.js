@@ -37,6 +37,12 @@ describe("SuperSet", () => {
 
             expect(Array.from(result)).to.eql([1, 2, 3, 4, 5]);
         });
+
+        it("should return elements in all provided sets", () => {
+            const result = testSet.union(otherSetObj, new SuperSet([6, 7]));
+
+            expect(Array.from(result)).to.eql([1, 2, 3, 4, 5, 6, 7]);
+        });
     });
 
     describe("every", () => {
