@@ -49,11 +49,7 @@ element, `false` otherwise.
 
 Filtering out all small values
 
-    function isBigEnough(value) {
-        return value >= 10;
-    }
-    var filtered = new SuperSet([12, 5, 8, 130, 44]).filter(isBigEnough);
-    // filtered is SuperSet { 12, 130, 44 }
+    new SuperSet([12, 5, 8, 130, 44]).filter(elem => elem >= 10);  // SuperSet { 12, 130, 44 }
 
 See [Array.prototype.filter on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
 for more examples.
@@ -96,12 +92,8 @@ Function to test each element of the set. Invoked with arguments `(element, elem
 
 Testing size of all set elements
 
-    function isBigEnough(value) {
-      return value >= 10;
-    }
-    
-    new SuperSet([12, 5, 8, 130, 44]).every(isBigEnough);    // false
-    new SuperSet([12, 54, 18, 130, 44]).every(isBigEnough);  // true
+    new SuperSet([12, 5, 8, 130, 44]).every(elem => elem >= 10);    // false
+    new SuperSet([12, 54, 18, 130, 44]).every(elem => elem >= 10);  // true
 
 See [Array.prototype.every on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every)
 for more examples.
@@ -146,32 +138,168 @@ for more examples.
 
 ## `join(separator)`
 
+The `join()` method joins all elements of a set into a string.
+
+### Parameters
+
+#### separator
+
+*Optional.* Specifies a string to separate each element of the set. The separator is converted to a string if necessary.
+If omitted, the set elements are separated with a comma. If `separator` is an empty string, all elements are joined
+without any characters in between them.
+
+### Example
+
+Joining a set four different ways
+
+    const a = new SuperSet(['Wind', 'Rain', 'Fire']);
+    a.join();       // 'Wind,Rain,Fire'
+    a.join(', ');   // 'Wind, Rain, Fire'
+    a.join(' + ');  // 'Wind + Rain + Fire'
+    a.join('');     // 'WindRainFire'
+
+See [Array.prototype.join on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
+for more examples.
 
 ## `first`
+
+Provides the first element in the set. Since sets are not indexable, it simply gives the first element obtained from a 
+regular iteration is returned.
+
+### Example
+
+A deterministic example with a single-element set
+
+    let singleElementSet = new SuperSet([42]);
+    singleElementSet.first  // 42
 
 
 ## `reduce(func, initialValue)`
 
+The `reduce()` method applies a function against an accumulator and each value of the set (in no particular order) to
+reduce it to a single value.
+
+### Parameters
+
+#### func
+
+Function to execute on each value in the set. Invoked with arguments `(accumulator, element, element, setObj)`.
+
+#### initialValue
+
+*Optional.* Value to use as the first argument to the first call of the callback. 
+
+### Example
+
+Sum all the values of a set
+
+    new SuperSet([0, 1, 2, 3]).reduce((total, elem) => total + elem);  // 6
+
+See [Array.prototype.reduce on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
+for more examples.
+
 
 ## `some(func, thisArg)`
+
+The `some()` method tests whether some element in the array passes the test implemented by the provided function.
+
+### Parameters
+
+#### func
+
+Function to test each element of the set. Invoked with arguments `(element, element, setObj)`.
+
+#### thisArg
+
+*Optional.* Value to use as `this` when executing `func`. 
+
+### Example
+
+Testing if any element in set is larger than or equal to 10
+
+    new SuperSet([2, 5, 8, 1, 4]).some(elem => elem > 10);  // false
+    new SuperSet([12, 5, 8, 1, 4]).some(elem => elem > 10);  // true
+
+See [Array.prototype.some on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
+for more examples.
 
 
 ## `isSubsetOf(otherSetObj)`
 
+The `isSubsetOf()` method determines whether a set is a subset of a certain set. Returns `true` or `false` as appropriate. 
+
+### Example
+
+    let nums = new SuperSet([0, 1, 2, 3, 4]);
+    let even = new SuperSet([0, 2, 4]);
+    
+    even.isSubsetOf(nums);  // true
+    even.isSubsetOf(even);  // true
+    nums.isSubsetOf(even);  // false
+
 
 ## `equals(otherSetObj)`
+
+The `equals()` method determines whether a set is a equal to a certain set. Returns `true` or `false` as appropriate. 
+
+### Example
+
+    let set1 = new SuperSet([0, 1, 2]);
+    let set2 = new SuperSet([1, 2]);
+    
+    set1.equals(set2);  // false
+    set2.equals(set1);  // false
+    set1.equals(set1);  // true
+    
+    set2.add(0);
+    set1.equals(set2);  // true
+    set2.equals(set1);  // true
 
 
 ## `intersect(otherSetObj)`
 
+The `intersect()` method returns the intersection of a set with another set.
+
+### Example
+
+    let nums = new SuperSet([3, 4, 5, 6]);
+    let primes = new SuperSet([2, 3, 5, 7]);
+    
+    nums.intersect(primes);  // SuperSet { 3, 5 }
+
 
 ## `subtract(otherSetObj)`
+
+The `subtract()` method returns the elements in a set that are not in the other set provided.
+
+### Example
+
+    let nums = new SuperSet([3, 4, 5, 6]);
+    let primes = new SuperSet([2, 3, 5, 7]);
+    
+    nums.subtract(primes);  // SuperSet { 4, 6 }
 
 
 ## `update(iterable)`
 
+The `update()` methods adds all the elements from the provided iterable to the set.
+
+### Example
+
+    let nums = new SuperSet([0, 1, 2]);
+    nums.update([2, 4, 6]);  // SuperSet { 0, 1, 2, 4, 6 }
+
 
 ## `xor(otherSetObj)`
+
+The `xor()` method returns a new set containing only the elements occur in one of the two sets.
+
+### Example
+
+    let nums = new SuperSet([3, 4, 5, 6]);
+    let primes = new SuperSet([2, 3, 5, 7]);
+    
+    nums.xor(primes);  // SuperSet { 4, 6, 2, 7 }
 
 
 ---
