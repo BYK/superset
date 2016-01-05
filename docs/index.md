@@ -22,9 +22,11 @@ Function that produces an element of the new set. Invoked with arguments `(eleme
 
 Mapping a set of numbers to a set of square roots
 
-    var numbers = new SuperSet([1, 4, 9]);
-    var roots = numbers.map(Math.sqrt);
-    // roots is now SuperSet { 1, 2, 3 }, numbers is still SuperSet { 1, 4, 9 }
+```js
+let numbers = new SuperSet([1, 4, 9]);
+let roots = numbers.map(Math.sqrt);
+// roots is now SuperSet { 1, 2, 3 }, numbers is still SuperSet { 1, 4, 9 }
+```
 
 See [Array.prototype.map on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
 for more examples.
@@ -49,7 +51,9 @@ element, `false` otherwise.
 
 Filtering out all small values
 
-    new SuperSet([12, 5, 8, 130, 44]).filter(elem => elem >= 10);  // SuperSet { 12, 130, 44 }
+```js
+new SuperSet([12, 5, 8, 130, 44]).filter(elem => elem >= 10);  // SuperSet { 12, 130, 44 }
+```
 
 See [Array.prototype.filter on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
 for more examples.
@@ -64,11 +68,13 @@ arguments.
 
 Merging two sets
 
-    var first3 = new SuperSet(['a', 'b', 'c']);
-    var from2to5 = new SuperSet(['b', 'c', 'd', 'e']);
-    
-    var first5 = first3.union(from2to5);
-    // first5 is SuperSet { 'a', 'b', 'c', 'd', 'e' }
+```js
+var first3 = new SuperSet(["a", "b", "c"]);
+var from2to5 = new SuperSet(["b", "c", "d", "e"]);
+
+var first5 = first3.union(from2to5);
+// first5 is SuperSet { "a", "b", "c", "d", "e" }
+```
 
 See [Array.prototype.concat on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)
 for more examples.
@@ -92,8 +98,10 @@ Function to test each element of the set. Invoked with arguments `(element, elem
 
 Testing size of all set elements
 
-    new SuperSet([12, 5, 8, 130, 44]).every(elem => elem >= 10);    // false
-    new SuperSet([12, 54, 18, 130, 44]).every(elem => elem >= 10);  // true
+```js
+new SuperSet([12, 5, 8, 130, 44]).every(elem => elem >= 10);    // false
+new SuperSet([12, 54, 18, 130, 44]).every(elem => elem >= 10);  // true
+```
 
 See [Array.prototype.every on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every)
 for more examples.
@@ -118,19 +126,21 @@ Function to test each element of the set. Invoked with arguments `(element, elem
 
 Find a prime number in a set
 
-    function isPrime(element, _, setObj) {
-        let start = 2;
-        
-        while (start <= Math.sqrt(element)) {
-            if (element % start++ < 1)
-                return false;
-        }
-        
-        return element > 1;
+```js
+function isPrime(element, _, setObj) {
+    let start = 2;
+
+    while (start <= Math.sqrt(element)) {
+        if (element % start++ < 1)
+            return false;
     }
-    
-    new SuperSet([4, 6, 8, 12]).find(isPrime);  // undefined, not found
-    new SuperSet([4, 5, 8, 12]).find(isPrime);  // 5
+
+    return element > 1;
+}
+
+new SuperSet([4, 6, 8, 12]).find(isPrime);  // undefined, not found
+new SuperSet([4, 5, 8, 12]).find(isPrime);  // 5
+```
 
 See [Array.prototype.find on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
 for more examples.
@@ -152,14 +162,18 @@ without any characters in between them.
 
 Joining a set four different ways
 
-    const a = new SuperSet(['Wind', 'Rain', 'Fire']);
-    a.join();       // 'Wind,Rain,Fire'
-    a.join(', ');   // 'Wind, Rain, Fire'
-    a.join(' + ');  // 'Wind + Rain + Fire'
-    a.join('');     // 'WindRainFire'
+```js
+const events = new SuperSet(["Wind", "Rain", "Fire"]);
+
+events.join();       // "Wind,Rain,Fire"
+events.join(", ");   // "Wind, Rain, Fire"
+events.join(" + ");  // "Wind + Rain + Fire"
+events.join("");     // "WindRainFire"
+```
 
 See [Array.prototype.join on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
 for more examples.
+
 
 ## `first`
 
@@ -170,8 +184,10 @@ regular iteration is returned.
 
 A deterministic example with a single-element set
 
-    let singleElementSet = new SuperSet([42]);
-    singleElementSet.first  // 42
+```js
+let singleElementSet = new SuperSet([42]);
+singleElementSet.first;  // 42
+```
 
 
 ## `reduce(func, initialValue)`
@@ -193,7 +209,9 @@ Function to execute on each value in the set. Invoked with arguments `(accumulat
 
 Sum all the values of a set
 
-    new SuperSet([0, 1, 2, 3]).reduce((total, elem) => total + elem);  // 6
+```js
+new SuperSet([0, 1, 2, 3]).reduce((total, elem) => total + elem);  // 6
+```
 
 See [Array.prototype.reduce on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
 for more examples.
@@ -217,8 +235,10 @@ Function to test each element of the set. Invoked with arguments `(element, elem
 
 Testing if any element in set is larger than or equal to 10
 
-    new SuperSet([2, 5, 8, 1, 4]).some(elem => elem > 10);  // false
-    new SuperSet([12, 5, 8, 1, 4]).some(elem => elem > 10);  // true
+```js
+new SuperSet([2, 5, 8, 1, 4]).some(elem => elem > 10);  // false
+new SuperSet([12, 5, 8, 1, 4]).some(elem => elem > 10);  // true
+```
 
 See [Array.prototype.some on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
 for more examples.
@@ -230,12 +250,14 @@ The `isSubsetOf()` method determines whether a set is a subset of a certain set.
 
 ### Example
 
-    let nums = new SuperSet([0, 1, 2, 3, 4]);
-    let even = new SuperSet([0, 2, 4]);
-    
-    even.isSubsetOf(nums);  // true
-    even.isSubsetOf(even);  // true
-    nums.isSubsetOf(even);  // false
+```js
+let nums = new SuperSet([0, 1, 2, 3, 4]);
+let even = new SuperSet([0, 2, 4]);
+
+even.isSubsetOf(nums);  // true
+even.isSubsetOf(even);  // true
+nums.isSubsetOf(even);  // false
+```
 
 
 ## `equals(otherSetObj)`
@@ -244,16 +266,18 @@ The `equals()` method determines whether a set is a equal to a certain set. Retu
 
 ### Example
 
-    let set1 = new SuperSet([0, 1, 2]);
-    let set2 = new SuperSet([1, 2]);
-    
-    set1.equals(set2);  // false
-    set2.equals(set1);  // false
-    set1.equals(set1);  // true
-    
-    set2.add(0);
-    set1.equals(set2);  // true
-    set2.equals(set1);  // true
+```js
+let set1 = new SuperSet([0, 1, 2]);
+let set2 = new SuperSet([1, 2]);
+
+set1.equals(set2);  // false
+set2.equals(set1);  // false
+set1.equals(set1);  // true
+
+set2.add(0);
+set1.equals(set2);  // true
+set2.equals(set1);  // true
+```
 
 
 ## `intersect(otherSetObj)`
@@ -262,10 +286,12 @@ The `intersect()` method returns the intersection of a set with another set.
 
 ### Example
 
-    let nums = new SuperSet([3, 4, 5, 6]);
-    let primes = new SuperSet([2, 3, 5, 7]);
-    
-    nums.intersect(primes);  // SuperSet { 3, 5 }
+```js
+let nums = new SuperSet([3, 4, 5, 6]);
+let primes = new SuperSet([2, 3, 5, 7]);
+
+nums.intersect(primes);  // SuperSet { 3, 5 }
+```
 
 
 ## `subtract(otherSetObj)`
@@ -274,10 +300,12 @@ The `subtract()` method returns the elements in a set that are not in the other 
 
 ### Example
 
-    let nums = new SuperSet([3, 4, 5, 6]);
-    let primes = new SuperSet([2, 3, 5, 7]);
-    
-    nums.subtract(primes);  // SuperSet { 4, 6 }
+```js
+let nums = new SuperSet([3, 4, 5, 6]);
+let primes = new SuperSet([2, 3, 5, 7]);
+
+nums.subtract(primes);  // SuperSet { 4, 6 }
+```
 
 
 ## `update(iterable)`
@@ -286,8 +314,10 @@ The `update()` methods adds all the elements from the provided iterable to the s
 
 ### Example
 
-    let nums = new SuperSet([0, 1, 2]);
-    nums.update([2, 4, 6]);  // SuperSet { 0, 1, 2, 4, 6 }
+```js
+let nums = new SuperSet([0, 1, 2]);
+nums.update([2, 4, 6]);  // SuperSet { 0, 1, 2, 4, 6 }
+```
 
 
 ## `xor(otherSetObj)`
@@ -296,10 +326,12 @@ The `xor()` method returns a new set containing only the elements occur in one o
 
 ### Example
 
-    let nums = new SuperSet([3, 4, 5, 6]);
-    let primes = new SuperSet([2, 3, 5, 7]);
-    
-    nums.xor(primes);  // SuperSet { 4, 6, 2, 7 }
+```js
+let nums = new SuperSet([3, 4, 5, 6]);
+let primes = new SuperSet([2, 3, 5, 7]);
+
+nums.xor(primes);  // SuperSet { 4, 6, 2, 7 }
+```
 
 
 ---

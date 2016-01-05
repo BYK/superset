@@ -1,6 +1,8 @@
 env:
     node: true
     es6: true
+plugins:
+    - markdown
 rules:
     strict:
         - 2
@@ -38,7 +40,7 @@ rules:
     no-invalid-regexp: 2
     no-mixed-spaces-and-tabs: 2
     no-regex-spaces: 2
-    no-magic-numbers: 2
+    no-magic-numbers: 1
 
     require-jsdoc: 2
     valid-jsdoc: 2

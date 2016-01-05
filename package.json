@@ -13,11 +13,12 @@
     "coveralls": "^2.11.4",
     "dirty-chai": "^1.2.2",
     "eslint": "^1.10.3",
+    "eslint-plugin-markdown": "git+https://github.com/eslint/eslint-plugin-markdown.git",
     "istanbul": "^0.4.0",
     "mocha": "^2.3.3"
   },
   "scripts": {
-    "pretest": "eslint --ignore-path .gitignore .",
+    "pretest": "eslint  --ext \"md,js\" --ignore-path .gitignore .",
     "test": "istanbul cover ./node_modules/mocha/bin/_mocha",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },

@@ -1,0 +1,9 @@
+globals:
+    SuperSet: false
+rules:
+    no-unused-vars: 0
+    no-unused-expressions: 0
+    no-magic-numbers: 0
+    require-jsdoc: 0
+    prefer-const: 0
+    strict: 0
