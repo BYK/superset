@@ -23,7 +23,7 @@ Mapping a set of numbers to a set of square roots
 
     var numbers = new SuperSet([1, 4, 9]);
     var roots = numbers.map(Math.sqrt);
-    // roots is now SuperSet{1, 2, 3}, numbers is still SuperSet{1, 4, 9}
+    // roots is now SuperSet { 1, 2, 3 }, numbers is still SuperSet { 1, 4, 9 }
 
 See [Array.prototype.map on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
 for more examples.
@@ -52,7 +52,7 @@ Filtering out all small values
         return value >= 10;
     }
     var filtered = new SuperSet([12, 5, 8, 130, 44]).filter(isBigEnough);
-    // filtered is SuperSet{12, 130, 44}
+    // filtered is SuperSet { 12, 130, 44 }
 
 See [Array.prototype.filter on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
 for more examples.
@@ -70,7 +70,7 @@ Merging two sets
     var from2to5 = new SuperSet(['b', 'c', 'd', 'e']);
     
     var first5 = first3.union(from2to5);
-    // first5 is SuperSet{'a', 'b', 'c', 'd', 'e'}
+    // first5 is SuperSet { 'a', 'b', 'c', 'd', 'e' }
 
 See [Array.prototype.concat on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)
 for more examples.

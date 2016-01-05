@@ -3,6 +3,24 @@
 A library for ES6 that extends the built-in `Set` class to implement the missing fundamental methods such as `.map`,
 `.filter` and `.reduce` in addition to basic set methods such as `.union` and `.isSubsetOf`.
 
+## Install from NPM
+
+```sh
+$ npm install superset --save
+```
+
+## Use
+
+```js
+const SuperSet = require('superset');
+let numbers = new SuperSet([1, 2, 3, 4, 5]);
+let evenNumbers = numbers.filter(num => num % 2 === 0);  // SuperSet { 2, 4 }
+console.log(evenNumbers.isSubsetOf(numbers));  // true
+let oddNumbers = numbers.subtract(evenNumbers);  // SuperSet { 1, 3, 5 }
+```
+
+## Docs
+
 You can [check out the docs](https://superset.readthedocs.org/en/latest/DOCS/) or refer to the `Array` methods on 
 [MDN](https://developer.mozilla.org) for further information. The code is also documented using JSDoc.
 
