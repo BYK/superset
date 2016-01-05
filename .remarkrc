@@ -1,0 +1,24 @@
+{
+    "plugins": {
+        "lint": {
+            "external": [
+                "remark-validate-links",
+                "remark-lint-no-empty-sections"
+            ],
+            "code-block-style": "fenced",
+            "fenced-code-marker": "`",
+            "heading-style": "atx",
+            "maximum-line-length": 120,
+            "ordered-list-marker-style": ".",
+            "rule-style": "---",
+            "emphasis-marker": "*",
+            "strong-marker": "*",
+            "unordered-list-marker-style": "-",
+            "no-duplicate-headings": false
+        }
+    },
+    "settings": {
+        "commonmark": true,
+        "gfm": true
+    }
+}

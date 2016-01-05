@@ -6,7 +6,7 @@ A library for ES6 that extends the built-in `Set` class to implement the missing
 ## Install from NPM
 
 ```sh
-$ npm install superset --save
+npm install superset --save
 ```
 
 ## Use
