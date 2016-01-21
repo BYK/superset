@@ -161,7 +161,6 @@ rules:
     no-lonely-if: 2
     no-extra-bind: 2
     no-extra-parens: 2
-    eol-last: 2
     dot-location:
         - 2
         - property
