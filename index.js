@@ -198,6 +198,7 @@ class SuperSet extends Set {
      * @returns {*} The result of the whole reduce operation.
      */
     reduce(func, initialValue) {
+        /* eslint-disable no-magic-numbers */
         if (arguments.length < 2 && this.size === 0)
             throw new TypeError("An initial value is required when using an empty set.");
 

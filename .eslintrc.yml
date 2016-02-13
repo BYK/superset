@@ -1,12 +1,12 @@
+parserOptions:
+    ecmaVersion: 6
 env:
     node: true
     es6: true
 plugins:
     - markdown
 rules:
-    strict:
-        - 2
-        - global
+    strict: 2
     eqeqeq:
         - 2
         - allow-null
@@ -22,13 +22,17 @@ rules:
         - 2
         - args: all
           argsIgnorePattern: "^_.+"
+    no-implicit-globals: 2
+    no-self-assign: 2
     no-eq-null: 2
     no-bitwise: 2
     no-use-before-define: 1
     no-empty: 2
+    # no-empty-function: 2
     no-new: 2
     no-throw-literal: 2
     no-loop-func: 2
+    no-unmodified-loop-condition: 1
     no-inner-declarations: 2
     no-array-constructor: 2
     no-cond-assign: 2
@@ -40,6 +44,8 @@ rules:
     no-invalid-regexp: 2
     no-mixed-spaces-and-tabs: 2
     no-regex-spaces: 2
+    array-callback-return: 2
+    no-useless-constructor: 2
     no-magic-numbers: 1
 
     require-jsdoc: 2
@@ -55,6 +61,8 @@ rules:
         - 2
         - exceptions: ["$", "_", "i", "j"]
     no-irregular-whitespace: 2
+    no-whitespace-before-property: 2
+    template-curly-spacing: 2
     no-trailing-spaces: 2
     no-spaced-func: 2
     max-len: [1, 120, 4]
@@ -62,9 +70,7 @@ rules:
         - 2
         - double
 
-    space-before-keywords: 2
-    space-after-keywords: 2
-    space-return-throw-case: 2
+    keyword-spacing: 2
     space-before-blocks: 2
     space-before-function-paren:
         - 2
@@ -129,11 +135,13 @@ rules:
     default-case: 1
     guard-for-in: 1
     no-alert: 1
-    no-empty-label: 2
     no-eval: 2
     no-fallthrough: 2
+    no-case-declarations: 2
     no-implied-eval: 2
-    no-labels: 2
+    no-labels:
+        - 2
+        - allowSwitch: true
     no-label-var: 2
     no-iterator: 2
     no-lone-blocks: 2
@@ -177,10 +185,11 @@ rules:
         - 2
         - as-needed
     arrow-spacing: 2
-    no-arrow-condition: 2
+    no-confusing-arrow: 2
     generator-star-spacing:
         - 2
         - after
+    yield-star-spacing: 2
     no-class-assign: 2
     no-dupe-class-members: 2
 
