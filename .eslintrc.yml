@@ -83,6 +83,7 @@ rules:
         - always
         - exceptions: ["-", "=", "/"]
           markers: [","]
+    newline-before-return: 2
     new-cap: 2
     new-parens: 2
     no-undef-init: 2
