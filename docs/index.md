@@ -64,8 +64,8 @@ arguments.
 Merging two sets
 
 ```js
-var first3 = new SuperSet(["a", "b", "c"]);
-var from2to5 = new SuperSet(["b", "c", "d", "e"]);
+let first3 = new SuperSet(["a", "b", "c"]);
+let from2to5 = new SuperSet(["b", "c", "d", "e"]);
 
 first3.union(from2to5);  // → SuperSet { "a", "b", "c", "d", "e" }
 ```
