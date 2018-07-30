@@ -272,15 +272,16 @@ let primes = new SuperSet([2, 3, 5, 7]);
 nums.diff(primes);  // → SuperSet { 4, 6 }
 ```
 
-## `symmetric_diff(otherSetObj)`
-The `symmetric_diff()` of two sets A and B is the set of elements which are in either of the sets A or B but not in both.
+## `symmetricDiff(otherSetObj)`
+
+The `symmetricDiff()` of two sets A and B is the set of elements which are in either of the sets A or B but not in both.
 
 ### Example
 
 ```js
 let nums = new SuperSet([3, 4, 5, 6]);
 let primes = new SuperSet([2, 3, 5, 7]);
-nums.symmetric_diff(primes); // → SuperSet { 2, 4, 6, 7 }
+nums.symmetricDiff(primes); // → SuperSet { 2, 4, 6, 7 }
 ```
 
 ## `update(iterable)`

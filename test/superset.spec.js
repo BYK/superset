@@ -205,9 +205,9 @@ describe("SuperSet", () => {
         });
     });
 
-    describe("symmetric_diff", () => {
+    describe("symmetricDiff", () => {
         it("should return elements only in one set", () => {
-            const result = testSet.symmetric_diff(otherSetObj);
+            const result = testSet.symmetricDiff(otherSetObj);
 
             expect(Array.from(result)).to.eql([1, 4, 5]);
         });
