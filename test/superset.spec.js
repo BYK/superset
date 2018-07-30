@@ -102,15 +102,6 @@ describe("SuperSet", () => {
         });
     });
 
-    describe("first", () => {
-        it("should return the first element", () => {
-            testSet.clear();
-            testSet.add(Math.PI);
-
-            expect(testSet.first).to.equal(Math.PI);
-        });
-    });
-
     describe("reduce", () => {
         it("should reduce the elements using the function", () => {
             const result = testSet.reduce((accumulator, elem) => accumulator + elem);
@@ -198,9 +189,9 @@ describe("SuperSet", () => {
         });
     });
 
-    describe("subtract", () => {
+    describe("diff", () => {
         it("should return elements only in one set", () => {
-            const result = testSet.subtract(otherSetObj);
+            const result = testSet.diff(otherSetObj);
 
             expect(Array.from(result)).to.eql([1]);
         });
@@ -214,9 +205,9 @@ describe("SuperSet", () => {
         });
     });
 
-    describe("xor", () => {
+    describe("symmetric_diff", () => {
         it("should return elements only in one set", () => {
-            const result = testSet.xor(otherSetObj);
+            const result = testSet.symmetric_diff(otherSetObj);
 
             expect(Array.from(result)).to.eql([1, 4, 5]);
         });
