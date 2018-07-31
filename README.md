@@ -20,12 +20,12 @@ const evenNumbers = numbers.filter(num => num % 2 === 0);  // SuperSet { 2, 4 }
 
 evenNumbers.isSubsetOf(numbers);  // true
 
-numbers.subtract(evenNumbers);  // SuperSet { 1, 3, 5 }
+numbers.diff(evenNumbers);  // SuperSet { 1, 3, 5 }
 ```
 
 ## Docs
 
-You can [check out the docs](https://superset.readthedocs.org/en/latest/) or refer to the `Array` methods on 
+You can [check out the docs](https://superset.readthedocs.org/en/latest/) or refer to the `Array` methods on
 [MDN](https://developer.mozilla.org) for further information. The code is also documented using JSDoc.
 
 [npm-image]: https://img.shields.io/npm/v/superset.svg?style=flat-square
