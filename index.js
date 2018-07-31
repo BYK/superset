@@ -182,15 +182,6 @@ class SuperSet extends Set {
     }
 
     /**
-     * The first item in the set. This is a getter function.
-     *
-     * @returns {*} The first item in the set.
-     */
-    get first() {
-        return this[Symbol.iterator]().next().value;
-    }
-
-    /**
      * Reduces all items in the set using the provided reducing `func`. Equivalent of `Array.prototype.reduce`.
      * @param {reductionProcessor} func The reducing function.
      * @param {*} [initialValue] The initial value for the accumulator. When `reduce` is called on a non-empty set, the
@@ -268,7 +259,7 @@ class SuperSet extends Set {
      * @param {Set} otherSetObj The set to be subtracted.
      * @returns {SuperSet} The subtraction set for the A - B set operation where A is the current set instance.
      */
-    subtract(otherSetObj) {
+    diff(otherSetObj) {
         return new SuperSet(subtractGen(this, otherSetObj));
     }
 
@@ -292,7 +283,7 @@ class SuperSet extends Set {
      * @param {Set} otherSetObj The set to be used in the XOR operation.
      * @returns {SuperSet} The resultant set for the A ^ B set operation where A is the current set instance.
      */
-    xor(otherSetObj) {
+    symmetricDiff(otherSetObj) {
         return new SuperSet(xorGen(this, otherSetObj));
     }
 }

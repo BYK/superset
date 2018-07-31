@@ -15,7 +15,7 @@ Function that produces an element of the new set. Invoked with arguments `(eleme
 
 #### thisArg
 
-*Optional.* Value to use as `this` when executing `func`. 
+*Optional.* Value to use as `this` when executing `func`.
 
 ### Example
 
@@ -42,7 +42,7 @@ element, `false` otherwise.
 
 #### thisArg
 
-*Optional.* Value to use as `this` when executing `func`. 
+*Optional.* Value to use as `this` when executing `func`.
 
 ### Example
 
@@ -84,7 +84,7 @@ Function to test each element of the set. Invoked with arguments `(element, elem
 
 #### thisArg
 
-*Optional.* Value to use as `this` when executing `func`. 
+*Optional.* Value to use as `this` when executing `func`.
 
 ### Example
 
@@ -110,7 +110,7 @@ Function to test each element of the set. Invoked with arguments `(element, elem
 
 #### thisArg
 
-*Optional.* Value to use as `this` when executing `func`. 
+*Optional.* Value to use as `this` when executing `func`.
 
 ### Example
 
@@ -161,20 +161,6 @@ events.join("");     // → "WindRainFire"
 
 See [Array.prototype.join on MDN][mdn-join-url] for more examples.
 
-## `first`
-
-Provides the first element in the set. Since sets are not indexable, it simply gives the first element obtained from a 
-regular iteration is returned.
-
-### Example
-
-A deterministic example with a single-element set
-
-```js
-let singleElementSet = new SuperSet([42]);
-singleElementSet.first;  // → 42
-```
-
 ## `reduce(func, initialValue)`
 
 The `reduce()` method applies a function against an accumulator and each value of the set (in no particular order) to
@@ -188,7 +174,7 @@ Function to execute on each value in the set. Invoked with arguments `(accumulat
 
 #### initialValue
 
-*Optional.* Value to use as the first argument to the first call of the callback. 
+*Optional.* Value to use as the first argument to the first call of the callback.
 
 ### Example
 
@@ -212,7 +198,7 @@ Function to test each element of the set. Invoked with arguments `(element, elem
 
 #### thisArg
 
-*Optional.* Value to use as `this` when executing `func`. 
+*Optional.* Value to use as `this` when executing `func`.
 
 ### Example
 
@@ -227,8 +213,8 @@ See [Array.prototype.some on MDN][mdn-some-url] for more examples.
 
 ## `isSubsetOf(otherSetObj)`
 
-The `isSubsetOf()` method determines whether a set is a subset of a certain set. Returns `true` or `false` as 
-appropriate. 
+The `isSubsetOf()` method determines whether a set is a subset of a certain set. Returns `true` or `false` as
+appropriate.
 
 ### Example
 
@@ -243,7 +229,7 @@ nums.isSubsetOf(even);  // → false
 
 ## `equals(otherSetObj)`
 
-The `equals()` method determines whether a set is a equal to a certain set. Returns `true` or `false` as appropriate. 
+The `equals()` method determines whether a set is a equal to a certain set. Returns `true` or `false` as appropriate.
 
 ### Example
 
@@ -273,9 +259,9 @@ let primes = new SuperSet([2, 3, 5, 7]);
 nums.intersect(primes);  // → SuperSet { 3, 5 }
 ```
 
-## `subtract(otherSetObj)`
+## `diff(otherSetObj)`
 
-The `subtract()` method returns the elements in a set that are not in the other set provided.
+The `diff()` method returns the elements in a set that are not in the other set provided.
 
 ### Example
 
@@ -283,7 +269,19 @@ The `subtract()` method returns the elements in a set that are not in the other 
 let nums = new SuperSet([3, 4, 5, 6]);
 let primes = new SuperSet([2, 3, 5, 7]);
 
-nums.subtract(primes);  // → SuperSet { 4, 6 }
+nums.diff(primes);  // → SuperSet { 4, 6 }
+```
+
+## `symmetricDiff(otherSetObj)`
+
+The `symmetricDiff()` of two sets A and B is the set of elements which are in either of the sets A or B but not in both.
+
+### Example
+
+```js
+let nums = new SuperSet([3, 4, 5, 6]);
+let primes = new SuperSet([2, 3, 5, 7]);
+nums.symmetricDiff(primes); // → SuperSet { 2, 4, 6, 7 }
 ```
 
 ## `update(iterable)`
@@ -297,25 +295,12 @@ let nums = new SuperSet([0, 1, 2]);
 nums.update([2, 4, 6]);  // → SuperSet { 0, 1, 2, 4, 6 }
 ```
 
-## `xor(otherSetObj)`
-
-The `xor()` method returns a new set containing only the elements occur in one of the two sets.
-
-### Example
-
-```js
-let nums = new SuperSet([3, 4, 5, 6]);
-let primes = new SuperSet([2, 3, 5, 7]);
-
-nums.xor(primes);  // → SuperSet { 4, 6, 2, 7 }
-```
-
 ---
 
-Parts of this documentation are adapted from [MDN][mdn-url]. 
+Parts of this documentation are adapted from [MDN][mdn-url].
 
-[![Creative Commons License][creative-commons-image]][creative-commons-license]  
-This work is licensed under a 
+[![Creative Commons License][creative-commons-image]][creative-commons-license]
+This work is licensed under a
 [Creative Commons Attribution-ShareAlike 4.0 International License][creative-commons-license].
 
 [creative-commons-license]: http://creativecommons.org/licenses/by-sa/4.0/
