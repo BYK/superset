@@ -212,4 +212,12 @@ describe("SuperSet", () => {
             expect(Array.from(result)).to.eql([1, 4, 5]);
         });
     });
+
+    describe("discard", () => {
+        it("should delete elements in an iterable way and return updated elements.", () => {
+            const result = testSet.discard([1, 3]);
+
+            expect(Array.from(result)).to.eql([2]);
+        });
+    });
 });

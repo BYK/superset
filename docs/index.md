@@ -295,6 +295,17 @@ let nums = new SuperSet([0, 1, 2]);
 nums.update([2, 4, 6]);  // → SuperSet { 0, 1, 2, 4, 6 }
 ```
 
+## `discard(iterable)`
+
+The discard() method deletes the iterable elements from the set and return the updated elements.
+
+### Example
+
+```js
+let nums = new SuperSet([1, 2, 3, 4]);
+nums.discard([1, 3]); // → SuperSet { 2, 4 }
+```
+
 ---
 
 Parts of this documentation are adapted from [MDN][mdn-url].
