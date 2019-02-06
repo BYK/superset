@@ -219,5 +219,19 @@ describe("SuperSet", () => {
 
             expect(Array.from(result)).to.eql([2]);
         });
+
+        it("should delete undefined elements and return updated elements.", () => {
+            const result = testSet.discard([7]);
+
+            expect(Array.from(result)).to.eql([1, 2, 3]);
+        });
+
+        it("should delete again same elements in an iterable way and return current elements.", () => {
+            const result = testSet.discard([1]);
+            expect(Array.from(result)).to.eql([2, 3]);
+
+            const sameResult = testSet.discard([1]);
+            expect(Array.from(sameResult)).to.eql([2, 3]);
+        });
     });
 });

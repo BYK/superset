@@ -297,7 +297,7 @@ nums.update([2, 4, 6]);  // → SuperSet { 0, 1, 2, 4, 6 }
 
 ## `discard(iterable)`
 
-The discard() method deletes the iterable elements from the set and return the updated elements.
+The discard() method deletes the iterable elements from the data set and returns the updated elements.
 
 ### Example
 
