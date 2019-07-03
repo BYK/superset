@@ -286,6 +286,20 @@ class SuperSet extends Set {
     symmetricDiff(otherSetObj) {
         return new SuperSet(xorGen(this, otherSetObj));
     }
+
+    /**
+     * The discard() method deletes the iterable elements from the set and return the updated elements.
+     *
+     * @param {Iterable} iterable It contains iterable elements to be deleted from the current set.
+     * @returns {SuperSet} It returns the current state of the set after the deleted elements.
+     */
+
+    discard(iterable) {
+        for (const itm of iterable)
+            this.delete(itm);
+
+        return this;
+    }
 }
 
 module.exports = SuperSet;
