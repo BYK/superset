@@ -30,9 +30,9 @@ jobs:
       - uses: actions/setup-node@v1
       - name: Install
         run: yarn install
-     - name: NPM Pack
+      - name: NPM Pack
         run: npm pack
-     - name: Archive Artifacts
+      - name: Archive Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: ${{ github.sha }}

@@ -1,0 +1,15 @@
+minVersion: '0.13.2'
+github:
+  owner: BYK
+  repo: superset
+changelogPolicy: simple
+requireNames:
+  - /^superset.*\.tgz$/
+statusProvider:
+  name: github
+artifactProvider:
+  name: github
+targets:
+  - name: npm
+  - name: gcs
+  - name: github
