@@ -1,0 +1,39 @@
+name: 'Build / Test / Artifacts'
+on:
+  push:
+    branches:
+      - master
+      - release/**
+  pull_request:
+
+jobs:
+  job_build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ['10', '12']
+    name: Node ${{ matrix.node }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - name: Install
+        run: yarn install
+      - name: Test
+        run: yarn test
+
+  job_artifacts:
+    name: Artifacts Upload
+    needs: job_build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - name: Install
+        run: yarn install
+     - name: NPM Pack
+        run: npm pack
+     - name: Archive Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ github.sha }}
+          path: ${{ github.workspace }}/*.tgz
