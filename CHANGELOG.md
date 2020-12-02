@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 2.0.1
 
 - build: add .npmignore and ignore all irrelevant
 
