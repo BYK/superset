@@ -22,7 +22,7 @@
     "remark-validate-links": "^2.0.2"
   },
   "scripts": {
-    "pretest": "eslint  --ext \"md,js\" --ignore-path .gitignore . && remark -q --frail --no-stdout .",
+    "pretest": "eslint  --ext \"js\" --ignore-path .gitignore . && remark -q --frail --no-stdout .",
     "test": "istanbul cover ./node_modules/mocha/bin/_mocha",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
