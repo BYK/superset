@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- build: add .npmignore and ignore all irrelevant
+
 ## 2.0.0
 
 - new discard() method (#7)
