@@ -14,7 +14,8 @@
             "emphasis-marker": "*",
             "strong-marker": "*",
             "unordered-list-marker-style": "-",
-            "no-duplicate-headings": false
+            "no-duplicate-headings": false,
+            "list-item-indent": "space"
         }
     },
     "settings": {
