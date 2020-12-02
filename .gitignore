@@ -1,5 +1,5 @@
-# IntelliJ IDE
 .idea
+.vscode
 
 #Istanbul coverage files
 coverage
