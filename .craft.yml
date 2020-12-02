@@ -11,5 +11,4 @@ artifactProvider:
   name: github
 targets:
   - name: npm
-  - name: gcs
   - name: github
