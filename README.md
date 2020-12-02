@@ -31,6 +31,6 @@ You can [check out the docs](https://superset.readthedocs.org/en/latest/) or ref
 [npm-image]: https://img.shields.io/npm/v/superset.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/superset
 [gha-image]: https://github.com/BYK/superset/workflows/Build/badge.svg
-[gha-url]: https://github.com/BYK/superset/actions?query=workflow%3A%22Build
+[gha-url]: https://github.com/BYK/superset/actions?query=workflow%3ABuild
 [coveralls-image]: https://img.shields.io/coveralls/BYK/superset/master.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/r/BYK/superset?branch=master
