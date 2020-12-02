@@ -1,4 +1,4 @@
-name: 'Build / Test / Artifacts'
+name: Build 
 on:
   push:
     branches:
