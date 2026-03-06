@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.1
+
+### Bug Fixes 🐛
+
+- Update README badges for renamed CI workflow and Codecov by @BYK in [f96c1c6b](https://github.com/BYK/superset/commit/f96c1c6b7a2455cb582d5a7fe9d292d35e079a88)
+
 ## 3.0.0
 
 ### New Features ✨
