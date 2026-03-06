@@ -1,6 +1,6 @@
 {
   "name": "superset",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "A library that provides the missing Set methods such as map and filter.",
   "main": "index.js",
   "packageManager": "pnpm@10.28.0",
