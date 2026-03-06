@@ -1,13 +1,13 @@
-name: Build
+name: CI
+
 on:
   push:
-    branches:
-      - master
-      - release/**
+    branches: [master, 'release/**']
   pull_request:
+    branches: [master]
 
 jobs:
-  job_build:
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -25,9 +25,9 @@ jobs:
       - name: Test
         run: pnpm test
 
-  job_coverage:
-    name: Coverage Upload
-    needs: job_build
+  coverage:
+    name: Coverage
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -45,9 +45,10 @@ jobs:
         with:
           files: ./coverage/lcov.info
 
-  job_artifacts:
-    name: Artifacts Upload
-    needs: job_build
+  artifacts:
+    name: Artifacts
+    if: startsWith(github.ref, 'refs/heads/release/')
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -58,10 +59,10 @@ jobs:
           cache: pnpm
       - name: Install
         run: pnpm install --frozen-lockfile
-      - name: NPM Pack
+      - name: Pack tarball
         run: npm pack
-      - name: Archive Artifacts
+      - name: Upload tarball
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ github.sha }}
-          path: ${{ github.workspace }}/*.tgz
+          name: npm-tarball
+          path: '*.tgz'

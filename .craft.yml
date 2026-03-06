@@ -1,14 +1,15 @@
-minVersion: '0.13.2'
-github:
-  owner: BYK
-  repo: superset
-changelogPolicy: auto
-requireNames:
-  - /^superset.*\.tgz$/
-statusProvider:
-  name: github
+minVersion: '2.21.1'
+changelog:
+  policy: auto
+versioning:
+  policy: auto
 artifactProvider:
   name: github
+  config:
+    artifacts:
+      CI: npm-tarball
 targets:
   - name: npm
+    access: public
+    oidc: true
   - name: github
