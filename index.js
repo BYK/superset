@@ -90,7 +90,7 @@ function* chain() {
 function* xorGen(set1, set2) {
     yield* chain(
         subtractGen(set1, set2),
-        subtractGen(set2, set1)
+        subtractGen(set2, set1),
     );
 }
 

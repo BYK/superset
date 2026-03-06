@@ -1,4 +1,4 @@
-name: Build 
+name: Build
 on:
   push:
     branches:
@@ -11,29 +11,57 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: ['10', '12']
+        node: ['20', '22']
     name: Node ${{ matrix.node }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
       - name: Install
-        run: yarn install
+        run: pnpm install --frozen-lockfile
       - name: Test
-        run: yarn test
+        run: pnpm test
+
+  job_coverage:
+    name: Coverage Upload
+    needs: job_build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: pnpm
+      - name: Install
+        run: pnpm install --frozen-lockfile
+      - name: Test with coverage
+        run: pnpm test:ci
+      - name: Upload coverage to Codecov
+        uses: getsentry/codecov-action@main
+        with:
+          files: ./coverage/lcov.info
 
   job_artifacts:
     name: Artifacts Upload
     needs: job_build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: pnpm
       - name: Install
-        run: yarn install
+        run: pnpm install --frozen-lockfile
       - name: NPM Pack
         run: npm pack
       - name: Archive Artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ github.sha }}
           path: ${{ github.workspace }}/*.tgz
