@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.2
+
+### Bug Fixes 🐛
+
+- Patch flatted CVE-2026-32141 unbounded recursion DoS by @BYK in [#27](https://github.com/BYK/superset/pull/27)
+
 ## 3.0.1
 
 ### Bug Fixes 🐛
