@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.3
+
+### Bug Fixes 🐛
+
+- Patch 8 open Dependabot security alerts by @BYK in [#29](https://github.com/BYK/superset/pull/29)
+
 ## 3.0.2
 
 ### Bug Fixes 🐛
