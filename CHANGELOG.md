@@ -1,5 +1,15 @@
 # Changelog
 
+## 3.0.4
+
+### Bug Fixes 🐛
+
+- Upgrade GitHub Actions to Node 24 and fix corepack blocking npm by @BYK in [#33](https://github.com/BYK/superset/pull/33)
+
+### Internal Changes 🔧
+
+- (deps) Bump brace-expansion from 5.0.5 to 5.0.6 by @dependabot in [#31](https://github.com/BYK/superset/pull/31)
+
 ## 3.0.3
 
 ### Bug Fixes 🐛
