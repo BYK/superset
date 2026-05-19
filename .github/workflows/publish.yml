@@ -47,13 +47,7 @@ jobs:
 
       - uses: actions/setup-node@v6
         with:
-          node-version: 22
-
-      - name: Upgrade npm for OIDC trusted publishing
-        run: |
-          corepack disable
-          npm install -g npm@latest
-          npm --version
+          node-version: 24
 
       - name: Install Craft
         run: |
